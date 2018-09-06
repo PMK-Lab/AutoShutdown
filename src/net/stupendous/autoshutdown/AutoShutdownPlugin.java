@@ -53,6 +53,8 @@ public class AutoShutdownPlugin extends org.bukkit.plugin.java.JavaPlugin
     pluginName = getDescription().getName();
     log = new Log(pluginName);
     
+    getServer().getPluginManager().registerEvents(new PlayerEvents(this), this);
+    
     settings.setup(this);
     
     scheduler = getServer().getScheduler();
