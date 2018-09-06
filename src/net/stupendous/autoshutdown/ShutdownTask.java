@@ -29,26 +29,27 @@ public class ShutdownTask extends TimerTask
         
         plugin.kickAll();
         
-        BukkitTask t = new BukkitRunnable() {
+        plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
 			
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
 				
+				plugin.getServer().savePlayers();
+		        Server server = plugin.getServer();
+		        
+		        server.savePlayers();
+		        
+		        for (World world : server.getWorlds()) {
+		          world.save();
+		          server.unloadWorld(world, true);
+		        }
+		        
+		        server.shutdown();
+				
 			}
-		}.runTaskLater(plugin, 360);
-        
-        plugin.getServer().savePlayers();
-        Server server = plugin.getServer();
-        
-        server.savePlayers();
-        
-        for (World world : server.getWorlds()) {
-          world.save();
-          server.unloadWorld(world, true);
-        }
-        
-        server.shutdown();
+		}, 360);
+		
       }
     });
   }
