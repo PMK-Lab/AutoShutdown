@@ -14,10 +14,10 @@ public class Util
   public static Log log = null;
   public static AutoShutdownPlugin plugin = null;
   
-  public static void init(org.bukkit.plugin.Plugin plugin, Log log) {
+  public static void init(AutoShutdownPlugin plugin, Log log) {
     plugin = (AutoShutdownPlugin)plugin;
     pluginName = plugin.getDescription().getName();
-    log = log;
+    log = plugin.log;
   }
   
   public static String parseColor(String s) {

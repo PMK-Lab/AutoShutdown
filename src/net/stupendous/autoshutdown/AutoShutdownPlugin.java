@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TreeSet;
-import net.stupendous.autoshutdown.misc.Log;
-import org.bukkit.Server;
-import org.bukkit.configuration.file.FileConfiguration;
+
 import org.bukkit.entity.Player;
+
+import net.stupendous.autoshutdown.misc.Log;
 
 public class AutoShutdownPlugin extends org.bukkit.plugin.java.JavaPlugin
 {
@@ -21,8 +21,8 @@ public class AutoShutdownPlugin extends org.bukkit.plugin.java.JavaPlugin
   protected Timer shutdownTimer = null;
   protected org.bukkit.scheduler.BukkitScheduler scheduler = null;
   protected boolean shutdownImminent = false;
-  protected TreeSet<Calendar> shutdownTimes = new TreeSet();
-  protected ArrayList<Integer> warnTimes = new ArrayList();
+  protected TreeSet<Calendar> shutdownTimes = new TreeSet<>();
+  protected ArrayList<Integer> warnTimes = new ArrayList<>();
   
   SettingsManager settings = SettingsManager.getInstance();
   
@@ -101,7 +101,8 @@ public class AutoShutdownPlugin extends org.bukkit.plugin.java.JavaPlugin
     } catch (Exception e) {
       shutdownTimeStrings[0] = settings.getConfig().getString("times.shutdowntimes");
     }
-    try { Object localObject;
+    try { @SuppressWarnings("unused")
+	Object localObject;
       for (String timeString : shutdownTimeStrings) {
         localObject = scheduleShutdownTime(timeString);
       }
@@ -175,7 +176,8 @@ public class AutoShutdownPlugin extends org.bukkit.plugin.java.JavaPlugin
     log.info("Kicking all players ...");
     log.info(settings.getConfig().getString("messages.kickreason"));
     
-    Player[] players = getServer().getOnlinePlayers();
+    @SuppressWarnings("deprecation")
+	Player[] players = getServer().getOnlinePlayers();
     
     for (Player player : players) {
       log.info("Kicking player %s.", new Object[] { player.getName() });

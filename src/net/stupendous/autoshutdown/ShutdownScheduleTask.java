@@ -1,9 +1,7 @@
 package net.stupendous.autoshutdown;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Timer;
-import org.bukkit.configuration.file.FileConfiguration;
 
 public class ShutdownScheduleTask extends java.util.TimerTask
 {

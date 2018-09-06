@@ -1,9 +1,7 @@
 package net.stupendous.autoshutdown;
 
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Timer;
-import java.util.TreeSet;
+import net.stupendous.autoshutdown.misc.Log;
 import net.stupendous.autoshutdown.misc.Util;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,12 +11,13 @@ import org.bukkit.entity.Player;
 public class AutoShutdownCommand implements CommandExecutor
 {
   private final AutoShutdownPlugin plugin;
-  private net.stupendous.autoshutdown.misc.Log log;
+  @SuppressWarnings("unused")
+  private Log log;
   
   public AutoShutdownCommand(AutoShutdownPlugin plugin)
   {
     this.plugin = plugin;
-    log = log;
+    log = plugin.log;
   }
   
   public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

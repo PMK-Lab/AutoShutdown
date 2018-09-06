@@ -1,10 +1,11 @@
 package net.stupendous.autoshutdown;
 
 import java.util.TimerTask;
-import net.stupendous.autoshutdown.misc.Log;
+
 import org.bukkit.Server;
 import org.bukkit.World;
-import org.bukkit.scheduler.BukkitScheduler;
+
+import net.stupendous.autoshutdown.misc.Log;
 
 public class ShutdownTask extends TimerTask
 {
