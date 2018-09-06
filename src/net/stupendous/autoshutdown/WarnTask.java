@@ -8,12 +8,12 @@ import org.bukkit.configuration.file.FileConfiguration;
 public class WarnTask extends java.util.TimerTask
 {
   protected final AutoShutdownPlugin plugin;
-  protected final Log log;
+  //protected final Log log;
   protected long seconds = 0L;
   
   public WarnTask(AutoShutdownPlugin plugin, long seconds) {
     this.plugin = plugin;
-    log = log;
+    //log = log;
     this.seconds = seconds;
   }
   

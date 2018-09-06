@@ -37,7 +37,7 @@ public class Util
       } else {
         int colorCode = Integer.parseInt(m.group(1), 16);
         String color;
-        String color; String color; String color; String color; String color; String color; String color; String color; String color; String color; String color; String color; String color; String color; String color; String color; switch (colorCode) {
+        switch (colorCode) {
         case 0: 
           color = ChatColor.BLACK.toString();
           break;
@@ -144,7 +144,7 @@ public class Util
   public static void broadcast(String format, Object[] args) {
     String msg = String.format(format, args);
     String formattedMessage;
-    String formattedMessage; if (plugin.getSettings().getConfig().getBoolean("messages.showtag", true)) {
+    if (plugin.getSettings().getConfig().getBoolean("messages.showtag", true)) {
       formattedMessage = parseColor("&2[&a%s&2] &f%s", new Object[] { pluginName, msg });
     } else {
       formattedMessage = parseColor("&2[&a%s&2] &f%s", new Object[] { "Warning", msg });
