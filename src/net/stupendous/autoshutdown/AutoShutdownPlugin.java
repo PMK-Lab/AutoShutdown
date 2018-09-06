@@ -8,6 +8,7 @@ import java.util.TreeSet;
 import org.bukkit.entity.Player;
 
 import net.stupendous.autoshutdown.misc.Log;
+import net.stupendous.autoshutdown.misc.Util;
 
 public class AutoShutdownPlugin extends org.bukkit.plugin.java.JavaPlugin
 {
@@ -60,7 +61,7 @@ public class AutoShutdownPlugin extends org.bukkit.plugin.java.JavaPlugin
     
     scheduleAll();
     
-    net.stupendous.autoshutdown.misc.Util.init(this, log);
+    Util.init(this, log);
     
     if (backgroundTimer != null) {
       backgroundTimer.cancel();
