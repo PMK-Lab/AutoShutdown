@@ -44,7 +44,7 @@ public class ShutdownScheduleTask extends java.util.TimerTask
 
         plugin.shutdownTimer.schedule(new ShutdownTask(plugin), cal.getTime());
         
-        net.stupendous.autoshutdown.misc.Util.broadcast(plugin.settings.config.getString("messages.shutdownmessage") + " at %s", 
+        net.stupendous.autoshutdown.misc.Util.broadcast(plugin.settings.config.getString("messages.shutdownmessage") + " à %s", 
           new Object[] { cal.getTime().toString() });
         
         break;

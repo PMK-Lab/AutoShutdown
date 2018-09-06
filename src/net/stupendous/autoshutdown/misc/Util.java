@@ -14,10 +14,10 @@ public class Util
   public static Log log = null;
   public static AutoShutdownPlugin plugin = null;
   
-  public static void init(AutoShutdownPlugin plugin, Log log) {
-    plugin = (AutoShutdownPlugin)plugin;
-    pluginName = plugin.getDescription().getName();
-    log = plugin.log;
+  public static void init(AutoShutdownPlugin plg, Log l) {
+    plugin = plg;
+    pluginName = plg.getDescription().getName();
+    log = l;
   }
   
   public static String parseColor(String s) {
@@ -144,12 +144,11 @@ public class Util
   public static void broadcast(String format, Object[] args) {
     String msg = String.format(format, args);
     String formattedMessage;
-    if (plugin.getSettings().getConfig().getBoolean("messages.showtag", true)) {
-      formattedMessage = parseColor("&2[&a%s&2] &f%s", new Object[] { pluginName, msg });
-    } else {
+    //if (plugin.getSettings().getConfig().getBoolean("messages.showtag", true)) {
+    //  formattedMessage = parseColor("&2[&a%s&2] &f%s", new Object[] { pluginName, msg });
+    //} else {
       formattedMessage = parseColor("&2[&a%s&2] &f%s", new Object[] { "Warning", msg });
-    }
-    
+    //}
     plugin.getServer().broadcastMessage(formattedMessage);
   }
 }

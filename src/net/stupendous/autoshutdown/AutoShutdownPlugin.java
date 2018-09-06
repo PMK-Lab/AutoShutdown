@@ -5,7 +5,11 @@ import java.util.Calendar;
 import java.util.Timer;
 import java.util.TreeSet;
 
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
+
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
 
 import net.stupendous.autoshutdown.misc.Log;
 import net.stupendous.autoshutdown.misc.Util;
@@ -55,9 +59,11 @@ public class AutoShutdownPlugin extends org.bukkit.plugin.java.JavaPlugin
     shutdownImminent = false;
     shutdownTimes.clear();
     
-    org.bukkit.command.CommandExecutor autoShutdownCommandExecutor = new AutoShutdownCommand(this);
+    CommandExecutor autoShutdownCommandExecutor = new AutoShutdownCommand(this);
     getCommand("autoshutdown").setExecutor(autoShutdownCommandExecutor);
     getCommand("as").setExecutor(autoShutdownCommandExecutor);
+    
+    this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
     
     scheduleAll();
     
@@ -87,6 +93,7 @@ public class AutoShutdownPlugin extends org.bukkit.plugin.java.JavaPlugin
     } catch (Exception e) {
       log.severe("Failed to schedule AutoShutdownTask: %s", new Object[] { e.getMessage() });
     }
+    
     
     log.info(pluginName + " enabled!");
   }
@@ -182,7 +189,11 @@ public class AutoShutdownPlugin extends org.bukkit.plugin.java.JavaPlugin
     
     for (Player player : players) {
       log.info("Kicking player %s.", new Object[] { player.getName() });
-      player.kickPlayer(settings.config.getString("messages.kickreason"));
+      ByteArrayDataOutput out = ByteStreams.newDataOutput();
+      out.writeUTF("Connect");
+      out.writeUTF("lobby");
+		
+		player.sendPluginMessage(this, "BungeeCord", out.toByteArray());
     }
   }
   
