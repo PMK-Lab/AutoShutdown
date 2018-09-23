@@ -63,7 +63,6 @@ public class AutoShutdownPlugin extends org.bukkit.plugin.java.JavaPlugin
     
     CommandExecutor autoShutdownCommandExecutor = new AutoShutdownCommand(this);
     getCommand("autoshutdown").setExecutor(autoShutdownCommandExecutor);
-    getCommand("as").setExecutor(autoShutdownCommandExecutor);
     
     this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
     

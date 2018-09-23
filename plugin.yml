@@ -5,7 +5,4 @@ commands:
   autoshutdown:
     description: Interact with the AutoShutdown plugin
     usage: "Usage: '/autoshutdown help'"
-  as:
-    description: Interact with the AutoShutdown plugin
-    usage: "Usage: '/as help'"
     
